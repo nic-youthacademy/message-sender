@@ -25,47 +25,45 @@ input.onButtonPressed(Button.B, function () {
             finalString = "" + finalString + selectedChar
         }
     }
+    currentIndex = 0
+    selectedChar = textList[currentIndex]
 })
-function initialiseLetters () {
-    textList = []
-    textList = [
-    " ",
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-    "del"
-    ]
-}
 let newLastIndex = 0
 let finalString = ""
-let textList: void = null
 let selectedChar = ""
 let currentIndex = 0
+let textList: string[] = []
 radio.setGroup(1)
-initialiseLetters()
+textList = [
+" ",
+"a",
+"b",
+"c",
+"d",
+"e",
+"f",
+"g",
+"h",
+"i",
+"j",
+"k",
+"l",
+"m",
+"n",
+"o",
+"p",
+"q",
+"r",
+"s",
+"t",
+"u",
+"v",
+"w",
+"x",
+"y",
+"z",
+"del"
+]
 currentIndex = 0
 selectedChar = textList[currentIndex]
 finalString = " "
