@@ -27,6 +27,15 @@ input.onButtonPressed(Button.B, function () {
     }
     currentIndex = 0
     selectedChar = textList[currentIndex]
+    basic.showString("" + (selectedChar))
+})
+input.onGesture(Gesture.Shake, function () {
+    currentIndex = Math.abs((currentIndex + -1) % textList.length)
+    selectedChar = textList[currentIndex]
+    basic.showString("" + (selectedChar))
+})
+input.onLogoEvent(TouchButtonEvent.Pressed, function () {
+	
 })
 let newLastIndex = 0
 let finalString = ""
