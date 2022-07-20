@@ -1,21 +1,34 @@
+function deleteLastChar (text: string) {
+    newLastIndex = finalString.length - 1
+    return text.substr(0, newLastIndex)
+}
 input.onButtonPressed(Button.A, function () {
-    currentIndex = (currentIndex + 1) % text_list.length
-    finalString = text_list[currentIndex]
-    basic.showString(finalString)
+    currentIndex = (currentIndex + 1) % textList.length
+    selectedChar = textList[currentIndex]
+    basic.showString("" + (selectedChar))
 })
 input.onButtonPressed(Button.AB, function () {
-    radio.sendString(finalString)
+    radio.sendString("" + (finalString))
+    basic.showString("sent!")
+    finalString = " "
 })
 radio.onReceivedString(function (receivedString) {
     basic.showString(receivedString)
 })
 input.onButtonPressed(Button.B, function () {
-    currentIndex = (currentIndex + 1) % text_list.length
-    selectedChar = text_list[currentIndex]
-    basic.showString(selectedChar)
+    if (selectedChar == "del") {
+        finalString = deleteLastChar(finalString)
+    } else {
+        if (selectedChar == " ") {
+            finalString = selectedChar
+        } else {
+            finalString = "" + finalString + selectedChar
+        }
+    }
 })
-function initialiseLetters (letterList: string[][]) {
-    letterList.unshift([
+function initialiseLetters () {
+    textList = []
+    textList = [
     " ",
     "a",
     "b",
@@ -42,16 +55,17 @@ function initialiseLetters (letterList: string[][]) {
     "w",
     "x",
     "y",
-    "z"
-    ])
-    return letterList
+    "z",
+    "del"
+    ]
 }
+let newLastIndex = 0
 let finalString = ""
+let textList: void = null
 let selectedChar = ""
 let currentIndex = 0
-let text_list: string[] = []
 radio.setGroup(1)
-text_list = []
+initialiseLetters()
 currentIndex = 0
-selectedChar = text_list[currentIndex]
-finalString = "."
+selectedChar = textList[currentIndex]
+finalString = " "
